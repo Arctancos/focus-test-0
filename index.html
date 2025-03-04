@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Отслеживание фокуса</title>
+</head>
+<body>
+
+	<center><font id="focusStatus">heh</font></center>
+
+	<script type="text/javascript">
+		
+		function SetFocusStatus(st) {
+    var t = document.getElementById('focusStatus');
+    if (t) {
+    	var txt = st ? "Ура! Я в фокусе ^_^" : "За что игнор ? QAQ";
+    	t.innerHTML = txt + '<br>' + t.innerHTML;
+    }
+}
+
+document.addEventListener("visibilitychange", function () {
+    SetFocusStatus(document.visibilityState === "visible");
+});
+
+window.addEventListener("focus", function () {
+    SetFocusStatus(true);
+});
+
+window.addEventListener("blur", function () {
+    SetFocusStatus(false);
+});
+
+
+	</script>
+</body>
+</html>
